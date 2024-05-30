@@ -46,7 +46,14 @@ WHERE payment_date IS NULL;
 /*
 Exercise 13
 */
+SELECT DATE_FORMAT(CURRENT_DATE, '%m-%d-%Y') AS 'current_date';
 
+/*
+Exercise 14
+*/
+SELECT 50000 AS starting_principal,
+	   50000 * .065 AS interest,
+       (50000 * .065 + 50000) AS principal_plus_interest;
 
 
 
