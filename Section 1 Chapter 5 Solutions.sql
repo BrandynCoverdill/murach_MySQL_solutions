@@ -149,13 +149,38 @@ WHERE vendor_id = 44;
 /*
 Exercise 8
 */
+SELECT vendor_id, terms_id
+FROM invoices
+ORDER BY vendor_id, terms_id;
 
+UPDATE invoices
+SET terms_id = 2
+WHERE vendor_id IN
+	(SELECT vendor_id
+    FROM vendors
+    WHERE default_terms_id = 2);
+
+SELECT vendor_id, terms_id
+FROM invoices
+ORDER BY vendor_id, terms_id;
 
 /*
 Exercise 9
 */
+-- This will produce an error because you cannot delete a parent row.
+DELETE FROM invoices
+WHERE invoice_id = 115;
 
+SELECT *
+FROM invoice_line_items
+ORDER BY invoice_id DESC;
 
+DELETE FROM invoice_line_items
+WHERE invoice_id = 115;
 
+DELETE FROM invoices
+WHERE invoice_id = 115;
 
-
+SELECT *
+FROM invoices
+ORDER BY invoice_id DESC;
